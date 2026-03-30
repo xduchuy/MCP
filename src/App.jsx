@@ -216,10 +216,10 @@ const App = () => {
             </div>
 
             {/* TAB CONTROLS */}
-            <div className="flex items-center gap-1 mt-4 md:mt-0 bg-[#0a1122]/90 p-1.5 rounded-[1.25rem] border border-white/[0.03] shadow-[inset_0_2px_15px_rgba(0,0,0,0.5)]">
+            <div className="flex flex-col sm:flex-row items-center gap-2 mt-6 md:mt-0 bg-[#0a1122]/90 p-1.5 rounded-[1.5rem] md:rounded-[1.25rem] border border-white/[0.03] shadow-[inset_0_2px_15px_rgba(0,0,0,0.5)] w-full sm:w-auto">
               <button 
                 onClick={() => setActiveTab('simulation')}
-                className={`px-7 py-2.5 rounded-[1rem] text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 ${
+                className={`w-full sm:w-auto px-7 py-3 md:py-2.5 rounded-[1.25rem] md:rounded-[1rem] text-[10px] md:text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 ${
                   activeTab === 'simulation' 
                     ? 'bg-[#0dc5e0] text-[#050b14] shadow-[0_0_25px_rgba(13,197,224,0.3)] saturate-150' 
                     : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
@@ -229,7 +229,7 @@ const App = () => {
               </button>
               <button 
                 onClick={() => setActiveTab('ecosystem')}
-                className={`px-7 py-2.5 rounded-[1rem] text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 ${
+                className={`w-full sm:w-auto px-7 py-3 md:py-2.5 rounded-[1.25rem] md:rounded-[1rem] text-[10px] md:text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 ${
                   activeTab === 'ecosystem' 
                     ? 'bg-[#0dc5e0] text-[#050b14] shadow-[0_0_25px_rgba(13,197,224,0.3)] saturate-150' 
                     : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
@@ -283,7 +283,7 @@ const App = () => {
                   <div className="p-2 bg-fuchsia-500/10 rounded-lg"><Terminal className="w-6 h-6 text-fuchsia-400" /></div>
                   <h3 className="text-xl font-black text-white tracking-tighter">2. Frameworks & SDKs</h3>
                 </div>
-                <div className="grid gap-4 max-h-[800px] overflow-y-auto pr-2 custom-scrollbar">
+                <div className="grid gap-4 md:max-h-[800px] md:overflow-y-auto pr-2 custom-scrollbar">
                   {ecosystemData.frameworks.map((item, i) => (
                     <div key={i} className="bg-[#0b1221]/80 backdrop-blur border border-white/5 p-5 rounded-2xl hover:border-fuchsia-500/50 transition-all hover:-translate-y-1 group shadow-lg">
                       <div className="flex items-start gap-4">
@@ -304,7 +304,7 @@ const App = () => {
                   <div className="p-2 bg-emerald-500/10 rounded-lg"><Server className="w-6 h-6 text-emerald-400" /></div>
                   <h3 className="text-xl font-black text-white tracking-tighter">3. MCP Servers</h3>
                 </div>
-                <div className="grid gap-4 max-h-[800px] overflow-y-auto pr-2 custom-scrollbar">
+                <div className="grid gap-4 md:max-h-[800px] md:overflow-y-auto pr-2 custom-scrollbar">
                   {ecosystemData.servers.map((item, i) => (
                     <div key={i} className="bg-[#0b1221]/80 backdrop-blur border border-white/5 p-5 rounded-2xl hover:border-emerald-500/50 transition-all hover:-translate-y-1 group shadow-lg">
                       <div className="flex items-start gap-4">
@@ -330,13 +330,13 @@ const App = () => {
               
               <div className="bg-[#0b1221]/80 backdrop-blur-xl p-3 rounded-3xl border border-cyan-500/20 flex flex-wrap items-center justify-between gap-4 shadow-[0_0_30px_rgba(34,211,238,0.05)] relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-fuchsia-500/5 z-0"></div>
-                <div className="flex items-center gap-2 relative z-10 w-full md:w-auto overflow-x-auto no-scrollbar pb-2 md:pb-0">
+                <div className="flex items-center gap-2 relative z-10 w-full lg:w-auto overflow-x-auto no-scrollbar pb-3 lg:pb-0 px-2 group-hover:cursor-grab">
                   {scenarios.map((s, idx) => (
                     <button
                       key={s.id}
                       onClick={() => { setActiveScenario(idx); setShowResult(false); }}
                       disabled={isSimulating}
-                      className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-[11px] font-black transition-all whitespace-nowrap border ${activeScenario === idx ? 'bg-cyan-500/10 border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.2)] scale-105' : 'border-transparent text-slate-500 hover:text-white hover:bg-white/5'}`}
+                      className={`flex items-center gap-2 px-6 py-3.5 rounded-2xl text-[10px] md:text-[11px] font-black uppercase tracking-wider transition-all whitespace-nowrap border-2 ${activeScenario === idx ? 'bg-cyan-500/10 border-cyan-400 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.3)] scale-105' : 'border-transparent text-slate-500 hover:text-white hover:bg-white/5'}`}
                     >
                       {s.icon} {s.label}
                     </button>
@@ -354,7 +354,7 @@ const App = () => {
               </div>
 
               {/* Visualizer Stage */}
-              <div className="bg-[#060b14] rounded-[3rem] border border-cyan-500/10 p-8 md:p-16 relative overflow-hidden flex flex-col items-center justify-center min-h-[600px] shadow-2xl">
+              <div className="bg-[#060b14] rounded-[2.5rem] md:rounded-[3rem] border border-cyan-500/10 p-6 md:p-16 relative overflow-hidden flex flex-col items-center justify-center min-h-[500px] md:min-h-[600px] shadow-2xl">
                 
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
                   <defs>
@@ -384,8 +384,8 @@ const App = () => {
                   </div>
                 )}
 
-                <div className="relative flex flex-col items-center gap-14 w-full max-w-2xl z-10">
-                  <div className={`group relative transition-all duration-500 p-8 rounded-[2.5rem] border flex flex-col items-center gap-4 w-72 overflow-hidden ${activeStep === 'hosts' ? 'bg-[#0f172a] border-cyan-400 scale-110 shadow-[0_0_50px_rgba(34,211,238,0.2)]' : 'bg-[#0b1221] border-white/5 opacity-60'}`}>
+                <div className="relative flex flex-col items-center gap-10 md:gap-14 w-full max-w-2xl z-10">
+                  <div className={`group relative transition-all duration-500 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border flex flex-col items-center gap-4 w-full max-w-[280px] overflow-hidden ${activeStep === 'hosts' ? 'bg-[#0f172a] border-cyan-400 scale-105 md:scale-110 shadow-[0_0_50px_rgba(34,211,238,0.2)]' : 'bg-[#0b1221] border-white/5 opacity-60'}`}>
                     {activeStep === 'hosts' && <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent h-1/2 w-full animate-[scan_2s_linear_infinite]"></div>}
                     <div className={`p-4 rounded-2xl relative z-10 transition-all ${activeStep === 'hosts' ? 'bg-cyan-500 text-slate-900 shadow-[0_0_20px_rgba(34,211,238,0.5)]' : 'bg-slate-800 text-slate-500'}`}>
                       <Layout className="w-10 h-10" />
@@ -432,7 +432,7 @@ const App = () => {
                       { id: 'sharepoint', icon: <Database />, label: "SharePoint", active: activeScenario === 3 && activeStep === 'connector' },
                       { id: 'iot_hue', icon: <Radio />, label: "Hue IoT", active: activeScenario === 0 && activeStep === 'connector' }
                     ].map((item) => (
-                      <div key={item.id} className={`p-5 rounded-3xl border transition-all duration-700 flex flex-col items-center gap-3 relative overflow-hidden ${item.active ? `bg-[#0f172a] border-cyan-400 scale-110 shadow-[0_20px_40px_rgba(34,211,238,0.2)] -translate-y-4` : 'bg-[#0b1221] border-white/5 opacity-30'}`}>
+                      <div key={item.id} className={`p-4 md:p-5 rounded-[1.5rem] md:rounded-3xl border transition-all duration-700 flex flex-col items-center gap-2 md:gap-3 relative overflow-hidden ${item.active ? `bg-[#0f172a] border-cyan-400 scale-110 shadow-[0_20px_40px_rgba(34,211,238,0.2)] -translate-y-4` : 'bg-[#0b1221] border-white/5 opacity-30'}`}>
                         {item.active && <div className="absolute inset-0 bg-cyan-400/5 animate-pulse"></div>}
                         <div className={`p-3 rounded-2xl relative z-10 ${item.active ? 'bg-cyan-500 text-slate-900 shadow-[0_0_15px_rgba(34,211,238,0.5)]' : 'bg-slate-800 text-slate-500'}`}>
                           {item.icon}
